@@ -1,0 +1,261 @@
+[
+    {
+        "id": 1,
+        "name": "Xtreme XL",
+        "image": "img/banner1.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner1.png",
+            "img/banner2.png",
+            "img/banner3.png",
+            "img/banner4.png",
+            "img/banner5.png"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "GR NA Supreme Wrapping Film",
+        "image": "img/banner2.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner2.png",
+            "img/banner3.png",
+            "img/banner4.png",
+            "img/banner5.png"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "AD PrismaPro ",
+        "image": "img/banner3.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner3.png",
+            "img/banner4.png",
+            "img/banner5.png",
+            "img/banner6.png",
+            "img/banner7.png"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "NA ENCORE SERIES",
+        "image": "img/banner4.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner4.png",
+            "img/banner5.png",
+            "img/banner6.png",
+            "img/banner7.png",
+            "img/banner8.png"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "NA ADVENTURE RIG",
+        "image": "img/banner5.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner5.png",
+            "img/banner6.png",
+            "img/banner7.png",
+            "img/banner8.png",
+            "img/banner9.png"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "NA NEO MATTE BLACK",
+        "image": "img/banner6.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner6.png",
+            "img/banner7.png",
+            "img/banner8.png",
+            "img/banner9.png",
+            "img/banner10.png"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "LPM Q3 HVC",
+        "image": "img/banner7.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner7.png",
+            "img/banner8.png",
+            "img/banner9.png",
+            "img/banner10.png",
+            "img/banner11.png"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "agro edible oil",
+        "image": "img/banner8.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner8.png",
+            "img/banner8.png",
+            "img/banner8.png",
+            "img/banner8.png"
+        ]
+
+    },
+    {
+        "id": 9,
+        "name": "NA Graphics Automotive PPF",
+        "image": "img/banner9.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner9.png",
+            "img/banner9.png",
+            "img/banner9.png",
+            "img/banner9.png",
+            "img/banner9.png"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "agro edible oil",
+        "image": "img/banner10.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner10.png",
+            "img/banner11.png",
+            "img/banner12.png",
+            "img/banner13.png",
+            "img/banner14.png"
+        ]
+    },
+    {
+        "id": 11,
+        "name": "India Linerless",
+        "image": "img/banner11.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner11.png",
+            "img/banner12.png",
+            "img/banner13.png",
+            "img/banner14.png",
+            "img/banner15.png"
+        ]
+    },
+    {
+        "id": 12,
+        "name": "ANZ PPF CI & P",
+        "image": "img/banner12.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner12.png",
+            "img/banner13.png",
+            "img/banner14.png",
+            "img/banner15.png",
+            "img/banner16.png"
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Ignite 2025",
+        "image": "img/banner13.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner13.png",
+            "img/banner14.png",
+            "img/banner15.png",
+            "img/banner16.png",
+            "img/banner17.png"
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Phama Labeling Solutions ",
+        "image": "img/banner14.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner14.png",
+            "img/banner15.png",
+            "img/banner16.png",
+            "img/banner17.png",
+            "img/banner18.png"
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Beverage Landing Page ",
+        "image": "img/banner15.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner15.png",
+            "img/banner16.png",
+            "img/banner17.png",
+            "img/banner18.png",
+            "img/banner19.png"
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Tropolite foods  ",
+        "image": "img/banner16.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner16.png",
+            "img/banner17.png",
+            "img/banner18.png",
+            "img/banner19.png",
+            "img/banner20.png"
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Africa for inverstors ",
+        "image": "img/banner17.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner17.png",
+            "img/banner18.png",
+            "img/banner19.png",
+            "img/banner20.png",
+            "img/banner21.png"
+        ]
+    },
+    {
+        "id": 18,
+        "name": "Benin Textile Corporation ",
+        "image": "img/banner18.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner18.png",
+            "img/banner19.png",
+            "img/banner20.png",
+            "img/banner21.png",
+            "img/banner22.png"
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Dewars ",
+        "image": "img/banner25.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner25.png",
+            "img/banner6.png",
+            "img/banner17.png",
+            "img/banner8.png",
+            "img/banner19.png"
+        ]
+    },
+    {
+        "id": 20,
+        "name": "JK Tyre ",
+        "image": "img/banner24.png",
+        "link": "https://www.google.com",
+        "images": [
+            "img/banner24.png",
+            "img/banner25.png",
+            "img/banner21.png",
+            "img/banner7.png",
+            "img/banner18.png"
+        ]
+    }
+]
