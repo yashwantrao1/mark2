@@ -16,8 +16,29 @@ export function gridSlotStyle(s: GridSlot): CSSProperties {
   };
 }
 
-// banner size
+/**
+ * Banner cells at these `{rowStart}/{colStart}` grid lines stay empty (no card, no assignment).
+ */
+const EXCLUDED_BANNER_ORIGINS = new Set<string>([
+  "3/14",
+  "11/14",
+  "19/14",
+  "3/26",
+  "11/26",
+  "19/26",
+  "3/38",
+  "11/38",
+  "19/38",
+  "3/50",
+  "11/50",
+  "19/50",
+  "3/62",
+  "11/62",
+]);
 
+export function isExcludedBannerPlacement(slot: GridSlot): boolean {
+  return EXCLUDED_BANNER_ORIGINS.has(`${slot.rowStart}/${slot.colStart}`);
+}
 
 const COL_SPAN = 12;
 const ROW_SPAN = 8;
@@ -55,6 +76,7 @@ const beforeText = [
   ...slots(2, ROWS_7),
   ...slots(14, ROWS_7),
   ...slots(26, ROWS_NO_27),
+  ...slots(38, ROWS_NO_27),
 ] as const;
 
 /** Cols 50, 62, 74 overlap hero horizontally — skip row 27 on each. */
