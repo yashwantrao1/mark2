@@ -1,31 +1,69 @@
-/** Grid `<div>` classNames for banner tiles, in DOM order (excludes `.text-field` hero). Must match `page.tsx` layout. */
-function col(start: string, rows: readonly string[]): string[] {
-  return rows.map(
-    (row) =>
-      `col-span-9 row-span-6 row-start-${row} col-start-${start} `
-  );
+import type { CSSProperties } from "react";
+
+/** Banner tile placement on `<main>` CSS grid (line indices match grid line numbers). */
+
+export type GridSlot = {
+  colStart: number;
+  rowStart: number;
+  colSpan: number;
+  rowSpan: number;
+};
+
+export function gridSlotStyle(s: GridSlot): CSSProperties {
+  return {
+    gridColumn: `${s.colStart} / span ${s.colSpan}`,
+    gridRow: `${s.rowStart} / span ${s.rowSpan}`,
+  };
 }
 
+// banner size
+
+
+const COL_SPAN = 12;
+const ROW_SPAN = 8;
+
+/** Row bands (step 8) that fit in 58 rows. */
+const ROWS_7 = [3, 11, 19, 27, 35, 43, 51] as const;
+
+/** Same bands minus row line 27 — that row band is reserved for `.text-field`. */
+const ROWS_NO_27 = [3, 11, 19, 35, 43, 51] as const;
+
+function slots(colStart: number, rows: readonly number[]): GridSlot[] {
+  return rows.map((rowStart) => ({
+    colStart,
+    rowStart,
+    colSpan: COL_SPAN,
+    rowSpan: ROW_SPAN,
+  }));
+}
+
+/**
+ * Hero occupies grid lines col [29, 65), row [27, 35).
+ * No banner slot may overlap that rectangle (nothing sits “in” the text box).
+ */
+export const TEXT_FIELD_SLOT: GridSlot = {
+  colStart: 26,
+  rowStart: 27,
+  colSpan: 36,
+  rowSpan: ROW_SPAN,
+};
+
+/** Col 2 & 14 are fully left of col 29 — all 7 bands OK. */
+/** Col 26 overlaps hero cols only on [29,38): skip row 27 (same band as hero). */
+/** Col 38 is entirely inside hero cols — omit column 38 entirely. */
 const beforeText = [
-  ...col("2", ["3", "9", "15", "21", "27", "33", "39", "45", "51"]),
-  ...col("11", ["3", "9", "15", "21", "27", "33", "39", "45", "51"]),
-  ...col("20", ["3", "9", "15", "21", "27", "33", "39", "45", "51"]),
-  ...col("29", ["3", "9", "15", "21"]),
+  ...slots(2, ROWS_7),
+  ...slots(14, ROWS_7),
+  ...slots(26, ROWS_NO_27),
 ] as const;
 
+/** Cols 50, 62, 74 overlap hero horizontally — skip row 27 on each. */
 const afterText = [
-  ...col("29", ["33", "39", "45", "51"]),
-  ...col("38", ["3", "9", "15", "21", "33", "39", "45", "51"]),
-  ...col("47", ["3", "9", "15", "21", "33", "39", "45", "51"]),
-  ...col("56", ["3", "9", "15", "21", "33", "39", "45", "51"]),
-  ...col("65", ["3", "9", "15", "21", "27", "33", "39", "45", "51"]),
-  ...col("74", ["3", "9", "15", "21", "27", "33", "39", "45", "51"]),
-  ...col("83", ["3", "9", "15", "21", "27", "33", "39", "45", "51"]),
+  ...slots(50, ROWS_NO_27),
+  ...slots(62, ROWS_NO_27),
+  ...slots(74, ROWS_NO_27),
 ] as const;
 
 export const TEXT_FIELD_BEFORE_COUNT = beforeText.length;
 
-export const BANNER_GRID_SLOT_CLASSES: string[] = [
-  ...beforeText,
-  ...afterText,
-];
+export const BANNER_GRID_SLOTS: GridSlot[] = [...beforeText, ...afterText];
