@@ -6,8 +6,10 @@ import Link from "next/link";
 import SplitType from "split-type";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
+import { WorkOutboundTransitionProvider, useWorkOutboundTransition } from "@/app/context/WorkOutboundTransitionContext";
 import { type HomeCell, getWorkSlug } from "@/lib/homeData";
 import { isVideoMediaPath } from "@/lib/mediaPaths";
+import { normalizePublicSrc } from "@/lib/workRouteTransition";
 
 import {
   BANNER_GRID_SLOTS,
@@ -420,6 +422,8 @@ function BannerTile({
   const label = item?.name?.trim() ? item.name : null;
   const [cardHover, setCardHover] = useState(false);
   const tileLinkRef = useRef<HTMLAnchorElement>(null);
+  const workRouteTx = useWorkOutboundTransition();
+  const hideTileImage = workRouteTx?.activeTileIndex === tileIndex;
 
   useLayoutEffect(() => {
     if (!cardHover) return;
@@ -479,9 +483,21 @@ function BannerTile({
           title={item.name}
           onPointerEnter={handleEnter}
           onPointerLeave={handleLeave}
+          onClick={(e) => {
+            if (!workRouteTx?.startOutboundWorkNavigation || !tileLinkRef.current) return;
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+            e.preventDefault();
+            const slug = getWorkSlug(item);
+            const imageSrc = normalizePublicSrc(`/${item.image}`);
+            workRouteTx.startOutboundWorkNavigation(slug, imageSrc, tileLinkRef.current, tileIndex);
+          }}
         >
           {/* isolate: overlays blend against the bitmap of this subtree (cover + tint cells), not leaked filter contexts */}
-          <div className="pointer-events-none absolute inset-0 isolate z-0 min-h-0">
+          <div
+            className={`pointer-events-none absolute inset-0 isolate z-0 min-h-0 transition-opacity duration-150 ${
+              hideTileImage ? "opacity-0" : "opacity-100"
+            }`}
+          >
             <Image
               src={`/${item.image}`}
               alt={item.name}
@@ -711,6 +727,7 @@ export default function Home() {
   }, []);
 
   return (
+    <WorkOutboundTransitionProvider>
     <div className="bg-zinc-50 h-screen w-screen">
       
       <main
@@ -780,5 +797,6 @@ export default function Home() {
         ) : null}
       </main>
     </div>
+    </WorkOutboundTransitionProvider>
   );
 }

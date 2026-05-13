@@ -1,10 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getCellImagePaths, getHomeCellByRouteKey, routeSegmentsToKey, type HomeCell } from "@/lib/homeData";
-import { isVideoMediaPath } from "@/lib/mediaPaths";
+
+import WorkPageClient from "./WorkPageClient";
 
 type Props = {
   params: Promise<{ work: string[] | undefined }>;
@@ -53,47 +52,16 @@ export default async function WorkCatchAllPage({ params }: Props) {
   const imagePaths = getCellImagePaths(cell, { dedupe: false });
   const heading = resolveWorkTitle(cell);
   const body = resolveWorkDescription(cell);
+  const posterSrc = publicSrc(cell.image);
 
   return (
-    <main className="mx-auto max-w-5xl px-6 py-28">
-     
-      <header className="mb-10 space-y-3">
-        <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">{heading}</h1>
-        {body ? (
-          <p className="max-w-prose text-sm leading-relaxed text-zinc-600">{body}</p>
-        ) : null}
-      </header>
-
-      {imagePaths.length === 0 ? (
-        <p className="text-sm text-zinc-500">No images for this entry.</p>
-      ) : (
-        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {imagePaths.map((src, i) => (
-            <li key={`${src}-${i}`} className="relative aspect-square overflow-hidden rounded-lg bg-zinc-100">
-              {isVideoMediaPath(src) ? (
-                <video
-                  src={publicSrc(src)}
-                  className="absolute inset-0 h-full w-full object-contain"
-                  controls
-                  playsInline
-                  muted
-                  loop
-                  autoPlay
-                  aria-label={`${cell.name.trim()} — ${i + 1}`}
-                />
-              ) : (
-                <Image
-                  src={publicSrc(src)}
-                  alt={`${cell.name.trim()} — ${i + 1}`}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-contain"
-                />
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
-    </main>
+    <WorkPageClient
+      workSlug={key}
+      heading={heading}
+      body={body}
+      imagePaths={imagePaths}
+      name={cell.name}
+      posterSrc={posterSrc}
+    />
   );
 }
