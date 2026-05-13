@@ -2,6 +2,7 @@
 
 import gsap from "gsap";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import SplitType from "split-type";
 import { useLayoutEffect, useRef } from "react";
 
@@ -80,6 +81,26 @@ function TypewriterLabel({
 }
 
 const Header = () => {
+    const pathname = usePathname();
+    const navItems = [
+        { label: "Home", href: "/" },
+        { label: "Work", href: "/work" },
+        { label: "Info", href: "/info" },
+        { label: "Contact", href: "/contact" },
+    ] as const;
+
+    const currentItem =
+        navItems.find((item) => {
+            if (item.href === "/") return pathname === "/";
+            return pathname === item.href || pathname.startsWith(`${item.href}/`);
+        }) ?? navItems[0];
+
+    const centerItems = navItems.filter(
+        (item) =>
+            item.label !== "Contact" &&
+            item.href !== currentItem.href
+    );
+
     return (
         <div className="fixed top-0 left-0 z-50 flex h-8 w-full items-center justify-between px-10">
             <div className="flex min-w-[500px] items-center justify-start">
@@ -90,29 +111,37 @@ const Header = () => {
             <div className="flex w-full items-center justify-between">
                 <div>
                     <Link
-                        href="/"
+                        href={currentItem.href}
                         className="flex items-center gap-2 text-sm font-bold hover:underline"
                     >
                         <span
                             className="flex size-1.5 shrink-0 rounded-full bg-black"
                             aria-hidden
                         />
-                        <TypewriterLabel text="Home" delay={0.22} />
+                        <TypewriterLabel key={`${pathname}-${currentItem.label}`} text={currentItem.label} delay={0.22} />
                     </Link>
                 </div>
-                <div className="flex items-center gap-0">
-                    <Link href="/work" className="text-sm font-bold hover:underline ml-2">
-                        <TypewriterLabel text="Work" delay={0.38} />
-                    </Link>,
-                    <Link href="/about" className="text-sm font-bold hover:underline ml-2">
-                        <TypewriterLabel text="About Me" delay={0.48} />
-                    </Link>
+                <div className="flex items-center gap-0 text-sm font-bold">
+                    {centerItems.map((item, index) => (
+                        <span key={item.href} className="flex items-center">
+                            <Link href={item.href} className="ml-2 hover:underline">
+                                <TypewriterLabel
+                                    key={`${pathname}-${item.label}`}
+                                    text={item.label}
+                                    delay={0.38 + index * 0.1}
+                                />
+                            </Link>
+                            {index < centerItems.length - 1 ? "," : null}
+                        </span>
+                    ))}
                 </div>
             </div>
             <div className="flex min-w-[500px] justify-end">
-                <Link href="/contact" className="text-sm font-bold hover:underline">
-                    <TypewriterLabel text="Contact" delay={0.62} />
-                </Link>
+                {currentItem.label !== "Contact" ? (
+                    <Link href="/contact" className="text-sm font-bold hover:underline">
+                        <TypewriterLabel key={`${pathname}-Contact`} text="Contact" delay={0.62} />
+                    </Link>
+                ) : null}
             </div>
         </div>
     );

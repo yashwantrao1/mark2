@@ -1,6 +1,6 @@
 import homeJson from "@/public/home.json";
 
-/** Matches `public/home.json` (optional `key`, `title`, `description` when present). */
+/** Matches `public/home.json` (optional `key`, legacy `title` / `description`, SEO `meta*` when present). */
 export type HomeCell = {
   id: number;
   name: string;
@@ -10,6 +10,9 @@ export type HomeCell = {
   key?: string;
   title?: string;
   description?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  metaKeywords?: string;
 };
 
 export const homeCells: HomeCell[] = homeJson as HomeCell[];

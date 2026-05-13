@@ -7,6 +7,7 @@ import SplitType from "split-type";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 import { type HomeCell, getWorkSlug } from "@/lib/homeData";
+import { isVideoMediaPath } from "@/lib/mediaPaths";
 
 import {
   BANNER_GRID_SLOTS,
@@ -22,6 +23,9 @@ const HERO_DEFAULT = "Dive into digital immersion.";
 /** Explicit track counts for `<main>` (layout uses col/row line positions up to these). */
 const MAIN_GRID_COLS = 86;
 const MAIN_GRID_ROWS = 60;
+
+/** Hover collage on `/` uses only this many entries from `images[]`; the full list is on `/work/[slug]`. */
+const HOME_HOVER_COLLAGE_MAX_IMAGES = 5;
 
 /** Places each banner on a distinct random eligible tile; JSON row order ≠ reading order on the grid. */
 function assignBannersToRandomSlots(cells: HomeCell[]): (HomeCell | undefined)[] {
@@ -366,13 +370,26 @@ function HoverCollageLayer({
               gridRow: `${L.gridRowStart} / span ${L.gridRowSpan}`,
             }}
           >
-            <img
-              data-collage-img
-              src={publicSrc(src)}
-              alt=""
-              className="max-h-full max-w-full object-contain shadow-lg ring-1 ring-black/6"
-              draggable={false}
-            />
+            {isVideoMediaPath(src) ? (
+              <video
+                data-collage-img
+                src={publicSrc(src)}
+                className="max-h-full max-w-full object-contain shadow-lg ring-1 ring-black/6"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            ) : (
+              <img
+                data-collage-img
+                src={publicSrc(src)}
+                alt=""
+                className="max-h-full max-w-full object-contain shadow-lg ring-1 ring-black/6"
+                draggable={false}
+              />
+            )}
           </div>
         );
       })}
@@ -533,12 +550,13 @@ export default function Home() {
     const cell = bannerBySlot[hoveredPeerIndex];
     if (!cell) return null;
 
-    const imageSrcs =
+    const fullSrcs =
       cell.images && cell.images.length > 0
         ? [...cell.images]
         : cell.image
           ? [cell.image]
           : [];
+    const imageSrcs = fullSrcs.slice(0, HOME_HOVER_COLLAGE_MAX_IMAGES);
     if (!imageSrcs.length) return null;
 
     const slug = getWorkSlug(cell);
@@ -589,11 +607,11 @@ export default function Home() {
           gsap.fromTo(
             el,
             {
-              clipPath: "inset(0 52% 0 52%)",
+              // clipPath: "inset(0 52% 0 52%)",
               filter: "saturate(1.85) hue-rotate(10deg)",
             },
             {
-              clipPath: "inset(0 0% 0 0%)",
+              // clipPath: "inset(0 0% 0 0%)",
               filter: "brightness(1) saturate(1) hue-rotate(0deg)",
               duration: 0.52,
               ease,
