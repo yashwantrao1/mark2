@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
+import { Gideon_Roman } from "next/font/google";
+
 import "./globals.css";
 import Header from "@/app/components/Header";
+
+const gideonRoman = Gideon_Roman({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-gideon",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +23,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={` h-full antialiased`}
+      className={`${gideonRoman.variable} ${gideonRoman.className} h-full antialiased font-sans`}
     >
       <body className="min-h-full flex flex-col">
         <Header />

@@ -102,7 +102,7 @@ const Header = () => {
     );
 
     return (
-        <div className="fixed top-0 left-0 z-[70] flex h-8 w-full items-center justify-between px-10">
+        <div className="fixed top-0 left-0 z-50 flex h-8 w-full items-center justify-between px-10">
             <div className="flex min-w-[500px] items-center justify-start">
                 <Link href="/" className="text-sm font-bold hover:underline">
                     <TypewriterLabel text="Yashwant Rao" delay={0} />

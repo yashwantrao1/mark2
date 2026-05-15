@@ -55,13 +55,6 @@ export default async function WorkCatchAllPage({ params }: Props) {
   const posterSrc = publicSrc(cell.image);
 
   return (
-    <WorkPageClient
-      workSlug={key}
-      heading={heading}
-      body={body}
-      imagePaths={imagePaths}
-      name={cell.name}
-      posterSrc={posterSrc}
-    />
+    <WorkPageClient heading={heading} body={body} imagePaths={imagePaths} name={cell.name} posterSrc={posterSrc} />
   );
 }
