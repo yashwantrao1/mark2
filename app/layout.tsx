@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Gideon_Roman } from "next/font/google";
 
+import "./fonts.css";
 import "./globals.css";
 import Header from "@/app/components/Header";
 
@@ -25,6 +26,15 @@ export default function RootLayout({
       lang="en"
       className={`${gideonRoman.variable} ${gideonRoman.className} h-full antialiased font-sans`}
     >
+      <head>
+        <link
+          // rel="preload"
+          href="/font/1797.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <Header />
         {children}

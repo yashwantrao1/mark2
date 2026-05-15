@@ -95,7 +95,7 @@ function HeroAnimatedHeading({ text }: { text: string }) {
     <h1
       ref={ref}
       data-animate=""
-      className="text-5xl font-bold text-center  whitespace-pre "
+      className="font-heading text-8xl font-light text-center whitespace-pre"
     >
       {text}
     </h1>

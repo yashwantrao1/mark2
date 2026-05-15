@@ -114,7 +114,9 @@ export default function WorkPageClient({ heading, body, imagePaths, name, poster
       )}
 
       <div className="h-[50vh] w-full  flex items-center justify-center">
-        <h1 className="text-9xl font-semibold  text-zinc-900 text-center tracking-wider">{heading}</h1>
+        <h1 className="font-heading text-9xl  text-zinc-900 text-center  scale-y-150">
+          {heading}
+        </h1>
       </div>
     </main>
   );

@@ -3,6 +3,7 @@
 @theme {
   --font-sans: var(--font-gideon), serif;
   --font-serif: var(--font-gideon), serif;
+  --font-heading: "1797", serif;
 }
 
 :root {
