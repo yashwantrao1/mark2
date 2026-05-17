@@ -15,6 +15,7 @@ type Props = {
   imagePaths: string[];
   name: string;
   posterSrc: string;
+  leftCopy: string;
 };
 
 function WorkMedia({
@@ -75,7 +76,7 @@ function WorkMedia({
   );
 }
 
-export default function WorkPageClient({ heading, body, imagePaths, name, posterSrc }: Props) {
+export default function WorkPageClient({ leftCopy, heading, body, imagePaths, name, posterSrc }: Props) {
   const label = name.trim();
 
   return (
@@ -117,6 +118,9 @@ export default function WorkPageClient({ heading, body, imagePaths, name, poster
         <h1 className="font-heading text-9xl  text-zinc-900 text-center  scale-y-150">
           {heading}
         </h1>
+      </div>
+      <div>
+        <div dangerouslySetInnerHTML={{ __html: leftCopy }} />
       </div>
     </main>
   );

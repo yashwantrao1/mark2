@@ -13,6 +13,7 @@ export type HomeCell = {
   metaTitle?: string;
   metaDescription?: string;
   metaKeywords?: string;
+  leftCopy?: string;
 };
 
 export const homeCells: HomeCell[] = homeJson as HomeCell[];

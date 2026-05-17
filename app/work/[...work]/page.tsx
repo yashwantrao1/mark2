@@ -14,11 +14,15 @@ function publicSrc(src: string) {
 }
 
 function resolveWorkTitle(cell: HomeCell) {
-  return cell.metaTitle?.trim() || cell.title?.trim() || cell.name.trim() || "Work";
+  return cell.title?.trim() || cell.metaTitle?.trim() || cell.name.trim() || "Work";
 }
 
 function resolveWorkDescription(cell: HomeCell) {
   return cell.metaDescription?.trim() || cell.description?.trim() || "";
+}
+
+function resolveWorkLeftCopy(cell: HomeCell) {
+  return cell.leftCopy?.trim() || "";
 }
 
 function resolveWorkKeywords(cell: HomeCell) {
@@ -52,9 +56,10 @@ export default async function WorkCatchAllPage({ params }: Props) {
   const imagePaths = getCellImagePaths(cell, { dedupe: false });
   const heading = resolveWorkTitle(cell);
   const body = resolveWorkDescription(cell);
+  const leftCopy = resolveWorkLeftCopy(cell);
   const posterSrc = publicSrc(cell.image);
 
   return (
-    <WorkPageClient heading={heading} body={body} imagePaths={imagePaths} name={cell.name} posterSrc={posterSrc} />
+    <WorkPageClient leftCopy={leftCopy} heading={heading} body={body} imagePaths={imagePaths} name={cell.name} posterSrc={posterSrc} />
   );
 }
