@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { getCellImagePaths, getHomeCellByRouteKey, routeSegmentsToKey, type HomeCell } from "@/lib/homeData";
+import {
+  getCellImagePaths,
+  getHomeCellByRouteKey,
+  pickRandomExploreItems,
+  routeSegmentsToKey,
+  type HomeCell,
+} from "@/lib/homeData";
 
 import WorkPageClient from "./WorkPageClient";
 
@@ -23,6 +29,9 @@ function resolveWorkDescription(cell: HomeCell) {
 
 function resolveWorkLeftCopy(cell: HomeCell) {
   return cell.leftCopy?.trim() || "";
+}
+function resolveWorkRightCopy(cell: HomeCell) {
+  return cell.rightCopy?.trim() || "";
 }
 
 function resolveWorkKeywords(cell: HomeCell) {
@@ -57,9 +66,21 @@ export default async function WorkCatchAllPage({ params }: Props) {
   const heading = resolveWorkTitle(cell);
   const body = resolveWorkDescription(cell);
   const leftCopy = resolveWorkLeftCopy(cell);
+  const rightCopy = resolveWorkRightCopy(cell);
   const posterSrc = publicSrc(cell.image);
 
+  const exploreItems = pickRandomExploreItems(cell.link);
+
   return (
-    <WorkPageClient leftCopy={leftCopy} heading={heading} body={body} imagePaths={imagePaths} name={cell.name} posterSrc={posterSrc} />
+    <WorkPageClient
+      leftCopy={leftCopy}
+      rightCopy={rightCopy}
+      heading={heading}
+      body={body}
+      imagePaths={imagePaths}
+      name={cell.name}
+      posterSrc={posterSrc}
+      exploreItems={exploreItems}
+    />
   );
 }

@@ -3,6 +3,8 @@
 import Image from "next/image";
 
 import { MediaHoverGlitch } from "@/app/components/MediaHoverGlitch";
+import ExploreMoreWork from "@/app/components/ExploreMoreWork";
+import type { ExploreWorkItem } from "@/lib/homeData";
 import { isVideoMediaPath } from "@/lib/mediaPaths";
 
 function publicSrc(src: string) {
@@ -16,6 +18,8 @@ type Props = {
   name: string;
   posterSrc: string;
   leftCopy: string;
+  rightCopy: string;
+  exploreItems: ExploreWorkItem[];
 };
 
 function WorkMedia({
@@ -76,7 +80,16 @@ function WorkMedia({
   );
 }
 
-export default function WorkPageClient({ leftCopy, heading, body, imagePaths, name, posterSrc }: Props) {
+export default function WorkPageClient({
+  leftCopy,
+  rightCopy,
+  heading,
+  body,
+  imagePaths,
+  name,
+  posterSrc,
+  exploreItems,
+}: Props) {
   const label = name.trim();
 
   return (
@@ -119,9 +132,12 @@ export default function WorkPageClient({ leftCopy, heading, body, imagePaths, na
           {heading}
         </h1>
       </div>
-      <div>
-        <div dangerouslySetInnerHTML={{ __html: leftCopy }} />
+      <div className={`${leftCopy && rightCopy ? "grid grid-cols-2 gap-4" : "flex flex-col gap-4"}`}>
+        {leftCopy && <div dangerouslySetInnerHTML={{ __html: leftCopy }} />}
+        {rightCopy && <div dangerouslySetInnerHTML={{ __html: rightCopy }} />}
       </div>
+
+      <ExploreMoreWork items={exploreItems} />
     </main>
   );
 }

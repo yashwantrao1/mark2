@@ -14,9 +14,35 @@ export type HomeCell = {
   metaDescription?: string;
   metaKeywords?: string;
   leftCopy?: string;
+  rightCopy?: string;
 };
 
 export const homeCells: HomeCell[] = homeJson as HomeCell[];
+
+export type ExploreWorkItem = Pick<HomeCell, "name" | "image" | "link">;
+
+/** Random 3–4 catalog rows (name, image, link only); optionally omit the current work slug. */
+export function pickRandomExploreItems(excludeLink?: string): ExploreWorkItem[] {
+  const count = 3 + Math.floor(Math.random() * 2);
+  const exclude = excludeLink?.trim();
+
+  let pool: ExploreWorkItem[] = homeCells.map(({ name, image, link }) => ({
+    name,
+    image,
+    link,
+  }));
+
+  if (exclude) {
+    pool = pool.filter((item) => item.link.trim() !== exclude);
+  }
+
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+
+  return pool.slice(0, Math.min(count, pool.length));
+}
 
 /** Turn catch-all segments into one path key, e.g. `['jkTyre']` → `'jkTyre'`. */
 export function routeSegmentsToKey(segments: string[] | undefined): string {
