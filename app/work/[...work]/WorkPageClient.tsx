@@ -6,6 +6,7 @@ import { MediaHoverGlitch } from "@/app/components/MediaHoverGlitch";
 import ExploreMoreWork from "@/app/components/ExploreMoreWork";
 import type { ExploreWorkItem } from "@/lib/homeData";
 import { isVideoMediaPath } from "@/lib/mediaPaths";
+import WorkWithUs from "@/app/components/WorkWithUs";
 
 function publicSrc(src: string) {
   return src.startsWith("/") ? src : `/${src}`;
@@ -127,17 +128,18 @@ export default function WorkPageClient({
         </div>
       )}
 
-      <div className="h-[50vh] w-full  flex items-center justify-center">
-        <h1 className="font-heading text-9xl  text-zinc-900 text-center  scale-y-150">
+      <div className="my-44 w-full  flex items-center justify-center">
+        <h1 className="font-heading text-[12vw] text-zinc-900 text-center leading-none">
           {heading}
         </h1>
       </div>
-      <div className={`${leftCopy && rightCopy ? "grid grid-cols-2 gap-4" : "flex flex-col gap-4"}`}>
+      <div className={`${leftCopy && rightCopy ? "grid grid-cols-2 gap-4 my-44" : "flex flex-col gap-4 my-44"}`}>
         {leftCopy && <div dangerouslySetInnerHTML={{ __html: leftCopy }} />}
         {rightCopy && <div dangerouslySetInnerHTML={{ __html: rightCopy }} />}
       </div>
 
       <ExploreMoreWork items={exploreItems} />
+      <WorkWithUs />
     </main>
   );
 }

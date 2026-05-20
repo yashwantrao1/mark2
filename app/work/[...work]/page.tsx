@@ -10,6 +10,7 @@ import {
 } from "@/lib/homeData";
 
 import WorkPageClient from "./WorkPageClient";
+import Footer from "@/app/components/Footer";
 
 type Props = {
   params: Promise<{ work: string[] | undefined }>;
@@ -72,15 +73,18 @@ export default async function WorkCatchAllPage({ params }: Props) {
   const exploreItems = pickRandomExploreItems(cell.link);
 
   return (
-    <WorkPageClient
-      leftCopy={leftCopy}
-      rightCopy={rightCopy}
-      heading={heading}
-      body={body}
-      imagePaths={imagePaths}
-      name={cell.name}
-      posterSrc={posterSrc}
-      exploreItems={exploreItems}
-    />
+    <>
+      <WorkPageClient
+        leftCopy={leftCopy}
+        rightCopy={rightCopy}
+        heading={heading}
+        body={body}
+        imagePaths={imagePaths}
+        name={cell.name}
+        posterSrc={posterSrc}
+        exploreItems={exploreItems}
+      />
+      <Footer />
+    </>
   );
 }
