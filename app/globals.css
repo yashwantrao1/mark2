@@ -22,3 +22,13 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* Lenis root scroll: fixed viewport height on html/body clips the scroll limit */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
