@@ -95,7 +95,7 @@ function HeroAnimatedHeading({ text }: { text: string }) {
     <h1
       ref={ref}
       data-animate=""
-      className="font-heading lg:text-7xl text-8xl font-light text-center whitespace-pre"
+      className="lg:text-7xl text-8xl font-light text-center whitespace-pre leading-relaxed"
     >
       {text}
     </h1>
@@ -474,7 +474,7 @@ function BannerTile({
         <Link
           ref={tileLinkRef}
           href={`/work/${getWorkSlug(item)}`}
-          className="absolute inset-0 z-10 block min-h-0 overflow-hidden"          
+          className="absolute inset-0 z-10 block min-h-0 overflow-hidden"
           rel="noopener noreferrer"
           title={item.name}
           onPointerEnter={handleEnter}
@@ -503,9 +503,8 @@ function BannerTile({
                     height: `${50}%`,
                     mixBlendMode: "exclusion",
                   }}
-                  className={`pointer-events-none absolute z-2 box-border min-h-0 min-w-0 bg-[#fefdfc]/65 ${
-                    cardHover ? "visible" : "invisible"
-                  }`}
+                  className={`pointer-events-none absolute z-2 box-border min-h-0 min-w-0 bg-[#fefdfc]/65 ${cardHover ? "visible" : "invisible"
+                    }`}
                 />
               );
             })}
@@ -712,7 +711,7 @@ export default function Home() {
 
   return (
     <div className="bg-zinc-50 h-screen w-screen">
-      
+
       <main
         ref={mainRef}
         className="relative grid gap-2 h-full w-full overflow-hidden"
@@ -750,7 +749,7 @@ export default function Home() {
           onPointerEnter={() => onHoverLabel(HERO_DEFAULT)}
           onPointerLeave={() => onHoverLabel(null)}
         >
-          <HeroAnimatedHeading key={heroLabel} text={heroLabel}  />
+          <HeroAnimatedHeading key={heroLabel} text={heroLabel} />
         </div>
         {BANNER_GRID_SLOTS.slice(TEXT_FIELD_BEFORE_COUNT).map((slot, index) => {
           const globalIndex = TEXT_FIELD_BEFORE_COUNT + index;

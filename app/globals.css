@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-gideon), serif;
-  --font-serif: var(--font-gideon), serif;
-  --font-heading: "1797", serif;
+  --font-sans: "jjannon-regular", serif;
+  --font-serif: "jjannon-regular", serif;
 }
 
 :root {
@@ -11,9 +10,13 @@
   --foreground: #171717;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 html,
 body {
-  font-family: var(--font-gideon), serif;
+  font-family: "jjannon-regular", serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -31,4 +34,16 @@ html.lenis body {
 
 html.lenis.lenis-smooth {
   scroll-behavior: auto !important;
+}
+
+.heading_font {
+  font-family: "1797", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.jjannon-regular {
+  font-family: "jjannon-regular", serif;
+  font-weight: 400;
+  font-style: normal;
 }

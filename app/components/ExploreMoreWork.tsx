@@ -39,7 +39,7 @@ export default function ExploreMoreWork({ items }: Props) {
           <Link
             key={item.link}
             href={`/work/${getWorkSlug(item)}`}
-            className="relative z-10 w-fit text-7xl font-light font-heading leading-tight underline-offset-4 decoration-2 hover:underline"
+            className="relative z-10 w-fit text-7xl font-light  leading-tight underline-offset-4 decoration-2 hover:underline"
             onPointerEnter={() => setHoverSrc(item.image)}
           >
             {item.name}

@@ -82,6 +82,7 @@ function TypewriterLabel({
 
 const Header = () => {
     const pathname = usePathname();
+    const isContactRoute = pathname === "/contact" || pathname.startsWith("/contact/");
     const navItems = [
         { label: "Home", href: "/" },
         { label: "Work", href: "/work" },
@@ -102,7 +103,11 @@ const Header = () => {
     );
 
     return (
-        <div className="fixed top-0 left-0 z-50 flex h-8 w-full items-center justify-between px-10">
+        <header
+            className={`fixed top-0 left-0 z-50 flex h-8 w-full items-center justify-between px-10 ${
+                isContactRoute ? "invert" : ""
+            }`}
+        >
             <div className="flex min-w-[500px] items-center justify-start">
                 <Link href="/" className="text-sm font-bold hover:underline">
                     <TypewriterLabel text="Yashwant Rao" delay={0} />
@@ -143,7 +148,7 @@ const Header = () => {
                     </Link>
                 ) : null}
             </div>
-        </div>
+        </header>
     );
 };
 
