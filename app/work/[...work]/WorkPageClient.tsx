@@ -20,6 +20,7 @@ type Props = {
   posterSrc: string;
   leftCopy: string;
   rightCopy: string;
+  theme: boolean;
   exploreItems: ExploreWorkItem[];
 };
 
@@ -89,12 +90,13 @@ export default function WorkPageClient({
   imagePaths,
   name,
   posterSrc,
+  theme,
   exploreItems,
 }: Props) {
   const label = name.trim();
 
   return (
-    <main className="mx-auto  px-44 py-14 w-full">
+    <main className={`mx-auto  px-44 py-14 w-full ${theme ? 'bg-zinc-950' : ''}`}>
       <MediaHoverGlitch mediaFill className="w-full overflow-hidden aspect-video mb-4">
         <WorkMedia
           src={posterSrc}
@@ -113,7 +115,7 @@ export default function WorkPageClient({
       ) : (
         <div className="columns-2 gap-4">
           {imagePaths.map((src, i) => (
-            <MediaHoverGlitch key={`${src}-${i}`} className="overflow-hidden bg-zinc-100 mb-4">
+            <MediaHoverGlitch key={`${src}-${i}`} className="overflow-hidden mb-4">
               <WorkMedia
                 src={src}
                 alt={`${label} — ${i + 1}`}
@@ -128,18 +130,18 @@ export default function WorkPageClient({
         </div>
       )}
 
-      <div className="my-44 w-full  flex items-center justify-center">
-        <h1 className="font-heading text-[12vw] text-zinc-900 text-center leading-none">
+      <div className={`my-44 w-full  flex items-center justify-center ${theme ? "text-(--offWhite)" : "text-(--charcoleBlack)"}`}>
+        <h1 className="font-heading text-[12vw]  text-center leading-none">
           {heading}
         </h1>
       </div>
-      <div className={`${leftCopy && rightCopy ? "grid grid-cols-2 gap-4 my-44" : "flex flex-col gap-4 my-44"}`}>
-        {leftCopy && <div dangerouslySetInnerHTML={{ __html: leftCopy }} />}
-        {rightCopy && <div dangerouslySetInnerHTML={{ __html: rightCopy }} />}
+      <div className={`${leftCopy && rightCopy ? "grid grid-cols-2 gap-4 my-44 $ " : "flex flex-col gap-4 my-44"}`}>
+        {leftCopy && <div className={`${theme ? 'text-(--offWhite)' : 'text-(--charcoleBlack) font-bold'}`} dangerouslySetInnerHTML={{ __html: leftCopy }} />}
+        {rightCopy && <div className={`${theme ? 'text-(--offWhite)' : 'text-(--charcoleBlack) font-bold'}`} dangerouslySetInnerHTML={{ __html: rightCopy }} />}
       </div>
 
-      <ExploreMoreWork items={exploreItems} />
-      <WorkWithUs />
+      <ExploreMoreWork items={exploreItems} theme={theme} />
+      <WorkWithUs theme={theme} />
     </main>
   );
 }

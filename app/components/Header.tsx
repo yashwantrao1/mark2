@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import SplitType from "split-type";
 import { useLayoutEffect, useRef } from "react";
 
+import { getHomeCellByRouteKey } from "@/lib/homeData";
+
 /** Same rhythm as `HeroAnimatedHeading` on `app/page.tsx` (ink width + keystroke stagger). */
 const HEADER_KEYSTROKE_GAP = 0.068;
 const HEADER_INK_DURATION = 0.00048;
@@ -83,6 +85,8 @@ function TypewriterLabel({
 const Header = () => {
     const pathname = usePathname();
     const isContactRoute = pathname === "/contact" || pathname.startsWith("/contact/");
+    const workKey = pathname.startsWith("/work/") ? pathname.slice(6) : "";
+    const theme = Boolean(workKey && getHomeCellByRouteKey(workKey)?.theme);
     const navItems = [
         { label: "Home", href: "/" },
         { label: "Work", href: "/work" },
@@ -105,7 +109,7 @@ const Header = () => {
     return (
         <header
             className={`fixed top-0 left-0 z-50 flex h-8 w-full items-center justify-between px-10 ${
-                isContactRoute ? "invert" : ""
+                isContactRoute || theme ? "invert" : ""
             }`}
         >
             <div className="flex min-w-[500px] items-center justify-start">

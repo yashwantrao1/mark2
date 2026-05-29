@@ -35,6 +35,10 @@ function resolveWorkRightCopy(cell: HomeCell) {
   return cell.rightCopy?.trim() || "";
 }
 
+function workTheme(cell: HomeCell) {
+  return cell.theme || false;
+}
+
 function resolveWorkKeywords(cell: HomeCell) {
   const raw = cell.metaKeywords?.trim();
   if (!raw) return undefined;
@@ -69,6 +73,7 @@ export default async function WorkCatchAllPage({ params }: Props) {
   const leftCopy = resolveWorkLeftCopy(cell);
   const rightCopy = resolveWorkRightCopy(cell);
   const posterSrc = publicSrc(cell.image);
+  const theme = workTheme(cell);
 
   const exploreItems = pickRandomExploreItems(cell.link);
 
@@ -82,6 +87,7 @@ export default async function WorkCatchAllPage({ params }: Props) {
         imagePaths={imagePaths}
         name={cell.name}
         posterSrc={posterSrc}
+        theme={theme}
         exploreItems={exploreItems}
       />
       <Footer />

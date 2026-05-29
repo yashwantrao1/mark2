@@ -8,6 +8,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --charcoleBlack: #0A0504;
+  --offWhite: #F4F8FF;
 }
 
 ::-webkit-scrollbar {
@@ -21,10 +23,7 @@ body {
   font-style: normal;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-}
+
 
 /* Lenis root scroll: fixed viewport height on html/body clips the scroll limit */
 html.lenis,
@@ -46,4 +45,46 @@ html.lenis.lenis-smooth {
   font-family: "jjannon-regular", serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.contact-form {
+  color-scheme: dark;
+}
+
+.contact-form input,
+.contact-form select {
+  border-color: var(--offWhite);
+  color: var(--offWhite);
+}
+
+.contact-form input:focus,
+.contact-form select:focus {
+  border-color: var(--offWhite);
+}
+
+.contact-form select option {
+  background-color: var(--charcoleBlack);
+  color: var(--offWhite);
+}
+
+.contact-form input:-webkit-autofill,
+.contact-form input:-webkit-autofill:hover,
+.contact-form input:-webkit-autofill:focus,
+.contact-form input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--offWhite) !important;  
+  border-color: var(--offWhite) !important;
+  background-color: var(--charcoleBlack) !important;
+  background-clip: content-box !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--charcoleBlack) inset !important;
+  box-shadow: 0 0 0 1000px var(--charcoleBlack) inset !important;
+  transition: background-color 99999s ease-out 0s;
+  color: var(--offWhite);
+}
+
+.contact-form input:autofill {
+  -webkit-text-fill-color: var(--offWhite) !important;
+  caret-color: var(--offWhite);
+  background-color:var(--charcoleBlack) !important;
+  box-shadow: 0 0 0 1000px var(--charcoleBlack) inset !important;
+  color: var(--offWhite);
 }

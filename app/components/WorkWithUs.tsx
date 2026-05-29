@@ -1,13 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function WorkWithUs() {
+type Props = {
+  theme: boolean;
+};
+
+export default function WorkWithUs({ theme }: Props) {
   return (
     <>
       <div className="my-44">
-        <Link href="/contact" className="text-sm font-bold hover:underline w-fit">Contact Us</Link>
+        <Link href="/contact" className={`text-sm  hover:underline w-fit  ${theme ? "text-(--offWhite)" : "text-(--charcoleBlack) font-bold"}`}>
+          Contact Us
+        </Link>
         <div>
-          <Link href="/contact" className="group  block w-fit  py-12 px-10">
+          <Link href="/contact" className={`group  block w-fit  py-12 px-10  ${theme ? "text-(--offWhite)" : "text-(--charcoleBlack) "}`}>
             <div className="w-80">
               <h4 className="text-[12vw] font-light leading-[1cap] text-right">Work</h4>
             </div>
