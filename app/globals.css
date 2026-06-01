@@ -67,6 +67,17 @@ html.lenis.lenis-smooth {
   color: var(--offWhite);
 }
 
+.contact-form input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.contact-form input[type="number"]::-webkit-outer-spin-button,
+.contact-form input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .contact-form input:-webkit-autofill,
 .contact-form input:-webkit-autofill:hover,
 .contact-form input:-webkit-autofill:focus,
