@@ -4,16 +4,18 @@ import gsap from "gsap";
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
 /** Empty hover accent cells (no images — GSAP staggers visibility). */
-const HOVER_SLOT_COUNT = 6;
 
 type Props = {
   children: ReactNode;
   className?: string;
   /** Poster / fill media: layer is `absolute inset-0` like home banners. */
   mediaFill?: boolean;
+  numberOfGRid: number
 };
 
-export function MediaHoverGlitch({ children, className = "", mediaFill = false }: Props) {
+export function MediaHoverGlitch({ children, className = "", mediaFill = false, numberOfGRid }: Props) {
+  
+  const HOVER_SLOT_COUNT =  numberOfGRid || 6;
   const [cardHover, setCardHover] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 

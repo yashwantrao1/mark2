@@ -95,7 +95,7 @@ function HeroAnimatedHeading({ text }: { text: string }) {
     <h1
       ref={ref}
       data-animate=""
-      className="lg:text-7xl text-8xl font-light text-center whitespace-pre leading-relaxed"
+      className="lg:text-7xl text-8xl font-light text-center whitespace-pre leading-relaxed text-(--offWhite) "
     >
       {text}
     </h1>
@@ -710,7 +710,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-zinc-50 h-screen w-screen">
+    <div className="bg-(--offWhite) h-screen w-screen">
 
       <main
         ref={mainRef}
@@ -743,7 +743,7 @@ export default function Home() {
           )
         )}
         <div
-          className="text-field relative z-[40] whitespace-pre flex items-center justify-center"
+          className="text-field relative  whitespace-pre flex items-center justify-center mix-blend-difference"
           style={gridSlotStyle(TEXT_FIELD_SLOT)}
           title={HERO_DEFAULT}
           onPointerEnter={() => onHoverLabel(HERO_DEFAULT)}

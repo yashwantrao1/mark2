@@ -96,8 +96,8 @@ export default function WorkPageClient({
   const label = name.trim();
 
   return (
-    <main className={`mx-auto  px-44 py-14 w-full ${theme ? 'bg-zinc-950' : ''}`}>
-      <MediaHoverGlitch mediaFill className="w-full overflow-hidden aspect-video mb-4">
+    <main className={`mx-auto  px-44 py-14 w-full ${theme ? 'bg-(--charcoleBlack)' : ''}`}>
+      <MediaHoverGlitch  numberOfGRid={6} mediaFill className="w-full overflow-hidden aspect-video mb-4">
         <WorkMedia
           src={posterSrc}
           alt={label}
@@ -111,11 +111,11 @@ export default function WorkPageClient({
       </MediaHoverGlitch>
 
       {imagePaths.length === 0 ? (
-        <p className="text-sm text-zinc-500">No images for this entry.</p>
+        <p className="text-sm text-(--charcoleBlack)">No images for this entry.</p>
       ) : (
         <div className="columns-2 gap-4">
           {imagePaths.map((src, i) => (
-            <MediaHoverGlitch key={`${src}-${i}`} className="overflow-hidden mb-4">
+            <MediaHoverGlitch numberOfGRid={6} key={`${src}-${i}`} className="overflow-hidden mb-4">
               <WorkMedia
                 src={src}
                 alt={`${label} — ${i + 1}`}

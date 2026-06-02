@@ -112,7 +112,7 @@ const Header = () => {
                 isContactRoute || theme ? "invert" : ""
             }`}
         >
-            <div className="flex min-w-[500px] items-center justify-start">
+            <div className="flex min-w-[400px] items-center justify-start">
                 <Link href="/" className="text-sm font-bold hover:underline">
                     <TypewriterLabel text="Yashwant Rao" delay={0} />
                 </Link>
@@ -145,7 +145,7 @@ const Header = () => {
                     ))}
                 </div>
             </div>
-            <div className="flex min-w-[500px] justify-end">
+            <div className="flex min-w-[400px] justify-end">
                 {currentItem.label !== "Contact" ? (
                     <Link href="/contact" className="text-sm font-bold hover:underline">
                         <TypewriterLabel key={`${pathname}-Contact`} text="Contact" delay={0.62} />
