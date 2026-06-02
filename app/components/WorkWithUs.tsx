@@ -8,7 +8,7 @@ type Props = {
 export default function WorkWithUs({ theme }: Props) {
   return (
     <>
-      <div className="my-44">
+      <div className="2xl:my-44 my-32">
         <Link href="/contact" className={`text-sm  hover:underline w-fit  ${theme ? "text-(--offWhite)" : "text-(--charcoleBlack) font-bold"}`}>
           Contact Us
         </Link>

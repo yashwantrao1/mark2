@@ -96,7 +96,7 @@ export default function WorkPageClient({
   const label = name.trim();
 
   return (
-    <main className={`mx-auto  px-44 py-14 w-full ${theme ? 'bg-(--charcoleBlack)' : ''}`}>
+    <main className={`mx-auto  2xl:px-44 px-24 py-14 w-full ${theme ? 'bg-(--charcoleBlack)' : ''}`}>
       <MediaHoverGlitch  numberOfGRid={6} mediaFill className="w-full overflow-hidden aspect-video mb-4">
         <WorkMedia
           src={posterSrc}
