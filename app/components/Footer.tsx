@@ -4,13 +4,12 @@ import React from 'react'
 import { getHomeCellByRouteKey } from "@/lib/homeData";
 import { usePathname } from 'next/navigation';
 
-const Footer = () => {
+const Footer = ({ theme }: { theme: boolean }) => {
     const pathname = usePathname();
     const workKey = pathname.startsWith("/work/") ? pathname.slice(6) : "";
-    const theme = Boolean(workKey && getHomeCellByRouteKey(workKey)?.theme);
     return (
         <footer className={`px-10 pb-10 ${theme ? 'bg-(--charcoleBlack) text-(--charcoleBlack) font-bold' : 'bg-(--offWhite) text-(--offWhite) '}`}>
-            <div className={`${theme ? 'bg-(--offWhite)' : 'bg-(--charcoleBlack)'}`}>
+            <div className={`${theme ? 'bg-(--offWhite)' : 'bg-(--charcoleBlack)'} h-full w-full`}>
                 <div className='px-32 py-16'>
                     <div className='flex gap-4 items-center justify-between'>
                         <p className=' text-3xl'>Connect Me</p>

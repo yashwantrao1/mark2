@@ -50,7 +50,7 @@ export function MediaHoverGlitch({ children, className = "", mediaFill = false, 
       onPointerEnter={() => setCardHover(true)}
       onPointerLeave={() => setCardHover(false)}
     >
-      <div className={`${mediaFill ? "absolute inset-0" : "relative"} isolate z-0 min-h-0`}>{children}</div>
+      <div className={`${mediaFill ? "absolute inset-0" : "relative"} isolate z-0 min-h-0 w-full`}>{children}</div>
       {hoverSlots.map((i) => {
         const col = i % 3;
         const row = Math.floor(i / 3);
