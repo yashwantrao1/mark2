@@ -24,7 +24,7 @@ const page = () => {
 
       <InfoProcessSection />
 
-      <Footer theme={false} />
+      <Footer />
     </>
   )
 }

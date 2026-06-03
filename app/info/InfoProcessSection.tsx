@@ -49,8 +49,8 @@ export default function InfoProcessSection() {
     if (lenis) {
       lenis.on("scroll", onLenisScroll);
       ScrollTrigger.scrollerProxy(document.documentElement, {
-        scrollTop(value) {
-          if (arguments.length) {
+        scrollTop(value?: number) {
+          if (arguments.length && value !== undefined) {
             lenis.scrollTo(value, { immediate: true });
           }
           return lenis.scroll;

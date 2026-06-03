@@ -90,7 +90,7 @@ export default async function WorkCatchAllPage({ params }: Props) {
         theme={theme}
         exploreItems={exploreItems}
       />
-      <Footer />
+      <Footer  />
     </>
   );
 }
