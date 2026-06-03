@@ -41,8 +41,8 @@ export default function InfoProcessSection() {
     const items = gsap.utils.toArray<HTMLElement>(".item", section);
     if (!items.length) return;
 
-    gsap.set(items, { autoAlpha: 0, y: 48 });
-    gsap.set(items[0], { autoAlpha: 1, y: 0 });
+    gsap.set(items, { autoAlpha: 0, x: 500 });
+    // gsap.set(items[0], { autoAlpha: 0, x: '500px' });
 
     const onLenisScroll = () => ScrollTrigger.update();
 
@@ -79,18 +79,15 @@ export default function InfoProcessSection() {
       });
 
       items.forEach((item, index) => {
-        if (index === 0) return;
-        const prev = items[index - 1];
-        tl.to(prev, {
-          autoAlpha: 0,
-          y: -48,
-          duration: 1,
-          ease: "power2.in",
-        }).fromTo(
+        tl.fromTo(
           item,
-          { autoAlpha: 0, y: 48 },
-          { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" },
-          "<"
+          { autoAlpha: 0, x: 500 },
+          {
+            autoAlpha: 1,
+            x: 0,
+            duration: 1,
+            ease: "power2.out",
+          }
         );
       });
     }, section);
@@ -108,15 +105,37 @@ export default function InfoProcessSection() {
       ref={sectionRef}
       className="h-screen 2xl:px-44 px-24 pt-14 overflow-hidden"
     >
-      <div className="relative h-full w-full">
-        {ITEMS.map(({ title, body }) => (
-          <div key={title} className="item absolute inset-0 flex flex-col justify-center">
-            <h2 className="text-sm font-bold">{title}</h2>
-            <div className="pl-10 py-10 font-light leading-snug max-w-3xl">
-              <p>{body}</p>
-            </div>
+      <div className="relative h-full w-full flex flex-col  gap-3">
+        <div className="item relative inset-0 flex flex-col justify-center w-1/3">
+          <h2 className="text-sm font-bold">Insight</h2>
+          <div className="pl-5 py-2 font-light leading-snug max-w-3xl">
+            <p>Understanding the problem is the first step. I analyze goals, users, and opportunities to uncover challenges and identify the best path forward.</p>
           </div>
-        ))}
+        </div>
+        <div className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[15%]">
+          <h2 className="text-sm font-bold">Strategy</h2>
+          <div className="pl-5 py-2 font-light leading-snug max-w-3xl">
+            <p>A strong strategy turns ideas into action. I define priorities, technology, and workflows to create a clear roadmap for success.</p>
+          </div>
+        </div>
+        <div className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[30%]">
+          <h2 className="text-sm font-bold">Design</h2>
+          <div className="pl-5 py-2 font-light leading-snug max-w-3xl">
+            <p>Great design creates meaningful experiences. I craft intuitive, user-focused interfaces that balance usability, accessibility, and visual appeal.</p>
+          </div>
+        </div>
+        <div className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[45%]">
+          <h2 className="text-sm font-bold">Mettle</h2>
+          <div className="pl-5 py-2 font-light leading-snug max-w-3xl">
+            <p>Execution is where ideas become reality. Using modern technologies and clean architecture, I build scalable, reliable, and high-performing solutions.</p>
+          </div>
+        </div>
+        <div className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[60%]">
+          <h2 className="text-sm font-bold">Impact</h2>
+          <div className="pl-5 py-2 font-light leading-snug max-w-3xl">
+            <p>Success is measured by results. Through optimization and continuous improvement, I create products that drive engagement, growth, and lasting value.</p>
+          </div>
+        </div>
       </div>
     </div>
   );
