@@ -3,6 +3,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLenis } from "lenis/react";
+import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -42,7 +43,7 @@ export default function InfoProcessSection() {
     if (!items.length) return;
 
     gsap.set(items, { autoAlpha: 0, x: 500 });
-    // gsap.set(items[0], { autoAlpha: 0, x: '500px' });
+    gsap.set(items[0], { autoAlpha: 1, x: 500 });
 
     const onLenisScroll = () => ScrollTrigger.update();
 
@@ -103,39 +104,42 @@ export default function InfoProcessSection() {
   return (
     <div
       ref={sectionRef}
-      className="h-screen 2xl:px-44 px-24 pt-14 overflow-hidden"
+      className="h-screen 2xl:px-44 px-24 py-14 overflow-hidden"
     >
-      <div className="relative h-full w-full flex flex-col  gap-3">
-        <div className="item relative inset-0 flex flex-col justify-center w-1/3">
+      <div className="relative h-full w-full flex flex-col  justify-around gap-3">
+        <div data-image='/img/insight.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3">
           <h2 className="text-sm font-bold">Insight</h2>
-          <div className="pl-5 py-2 font-light leading-snug max-w-3xl">
+          <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg  leading-snug max-w-3xl">
             <p>Understanding the problem is the first step. I analyze goals, users, and opportunities to uncover challenges and identify the best path forward.</p>
           </div>
         </div>
-        <div className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[15%]">
+        <div data-image='/img/strategy.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[15%]">
           <h2 className="text-sm font-bold">Strategy</h2>
-          <div className="pl-5 py-2 font-light leading-snug max-w-3xl">
+          <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>A strong strategy turns ideas into action. I define priorities, technology, and workflows to create a clear roadmap for success.</p>
           </div>
         </div>
-        <div className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[30%]">
+        <div data-image='/img/design.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[30%]">
           <h2 className="text-sm font-bold">Design</h2>
-          <div className="pl-5 py-2 font-light leading-snug max-w-3xl">
+          <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>Great design creates meaningful experiences. I craft intuitive, user-focused interfaces that balance usability, accessibility, and visual appeal.</p>
           </div>
         </div>
-        <div className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[45%]">
+        <div data-image='/img/mettle.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[45%]">
           <h2 className="text-sm font-bold">Mettle</h2>
-          <div className="pl-5 py-2 font-light leading-snug max-w-3xl">
+          <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>Execution is where ideas become reality. Using modern technologies and clean architecture, I build scalable, reliable, and high-performing solutions.</p>
           </div>
         </div>
-        <div className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[60%]">
+        <div data-image='/img/impact.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[60%]">
           <h2 className="text-sm font-bold">Impact</h2>
-          <div className="pl-5 py-2 font-light leading-snug max-w-3xl">
+          <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>Success is measured by results. Through optimization and continuous improvement, I create products that drive engagement, growth, and lasting value.</p>
           </div>
         </div>
+      </div>
+      <div>
+        <Image src='/img/impact.jpg' alt='Info Process' width={500} height={500}></Image>
       </div>
     </div>
   );
