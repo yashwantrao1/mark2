@@ -4,35 +4,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLenis } from "lenis/react";
 import Image from "next/image";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ITEMS = [
-  {
-    title: "About me",
-    body: "Every successful product begins with understanding. I analyze business goals, user behavior, market opportunities, and technical requirements to uncover the real challenges and identify the most effective path toward a meaningful digital solution.",
-  },
-  {
-    title: "Strategy",
-    body: "A clear strategy transforms ideas into actionable plans. By defining priorities, architecture, user flows, technology choices, and project milestones, I create a roadmap that aligns business objectives with measurable outcomes and long-term scalability.",
-  },
-  {
-    title: "Design",
-    body: "Design is more than aesthetics—it shapes experiences. I craft intuitive interfaces, seamless user journeys, and responsive layouts that balance visual appeal with usability, ensuring users can interact with products naturally and efficiently.",
-  },
-  {
-    title: "Mettle",
-    body: "Mettle represents disciplined execution and engineering excellence. Using modern technologies, scalable architectures, and clean development practices, I build reliable, high-performance applications that are secure, maintainable, and ready for future growth.",
-  },
-  {
-    title: "Impact",
-    body: "The goal is not simply launching a product but delivering results. Through optimization, performance improvements, analytics, and continuous refinement, I help transform digital products into valuable assets that drive engagement, growth, and success.",
-  },
-] as const;
-
 export default function InfoProcessSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [imagePath, setImagePath] = useState("/img/insight.jpeg");
   const lenis = useLenis();
 
   useLayoutEffect(() => {
@@ -101,45 +79,80 @@ export default function InfoProcessSection() {
     };
   }, [lenis]);
 
+
+
+  const updateimage = (e: React.MouseEvent<HTMLDivElement>) => {
+    const image = e.currentTarget.dataset.image;
+    const randomImage = document.querySelector('#randomImage');
+
+    if (image) {
+      setImagePath(image);
+    }
+
+    if (!randomImage) return;
+
+    const maxTop = window.innerHeight - 150; // image height
+    const maxLeft = window.innerWidth - 250; // image width
+
+    const top = Math.random() * (maxTop - window.innerHeight * 0.05) + window.innerHeight * 0.05;
+    const left = Math.random() * (maxLeft - window.innerWidth * 0.05) + window.innerWidth * 0.05;
+
+    gsap.to(randomImage, {
+      display: "block",
+      top,
+      left,
+      duration: 0,
+    });
+  };
+
+  const updateImageLocaion = () => {
+    const randomImage = document.querySelector('#randomImage');
+    if (!randomImage) return;
+    gsap.to(randomImage, {
+      display: "none",
+      duration: 0,
+    });    
+  }
+
   return (
     <div
       ref={sectionRef}
-      className="h-screen 2xl:px-44 px-24 py-14 overflow-hidden"
+      className="h-screen 2xl:px-44 px-24 py-14 overflow-hidden bg-(--offWhite)"
     >
-      <div className="relative h-full w-full flex flex-col  justify-around gap-3">
-        <div data-image='/img/insight.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3">
+      <div className="relative h-full w-full flex flex-col  justify-around gap-3 text-(--offWhite) mix-blend-difference">
+        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/insight.jpeg' className="item relative inset-0 flex flex-col justify-center w-1/3 ">
           <h2 className="text-sm font-bold">Insight</h2>
           <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg  leading-snug max-w-3xl">
             <p>Understanding the problem is the first step. I analyze goals, users, and opportunities to uncover challenges and identify the best path forward.</p>
           </div>
         </div>
-        <div data-image='/img/strategy.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[15%]">
+        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/strategy.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[15%]">
           <h2 className="text-sm font-bold">Strategy</h2>
           <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>A strong strategy turns ideas into action. I define priorities, technology, and workflows to create a clear roadmap for success.</p>
           </div>
         </div>
-        <div data-image='/img/design.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[30%]">
+        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/design.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[30%]">
           <h2 className="text-sm font-bold">Design</h2>
           <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>Great design creates meaningful experiences. I craft intuitive, user-focused interfaces that balance usability, accessibility, and visual appeal.</p>
           </div>
         </div>
-        <div data-image='/img/mettle.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[45%]">
+        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/mettle.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[45%]">
           <h2 className="text-sm font-bold">Mettle</h2>
           <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>Execution is where ideas become reality. Using modern technologies and clean architecture, I build scalable, reliable, and high-performing solutions.</p>
           </div>
         </div>
-        <div data-image='/img/impact.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[60%]">
+        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/impact.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[60%]">
           <h2 className="text-sm font-bold">Impact</h2>
           <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>Success is measured by results. Through optimization and continuous improvement, I create products that drive engagement, growth, and lasting value.</p>
           </div>
         </div>
       </div>
-      <div>
-        <Image src='/img/impact.jpg' alt='Info Process' width={500} height={500}></Image>
+      <div id="randomImage" className="absolute 2xl:h-60 h-44 aspect-5/4 z-[-1] top-0 left-0 hidden">
+        <Image src={imagePath} alt='Info Process' width={500} height={500} className="h-full w-full object-cover grayscale-100"></Image>
       </div>
     </div>
   );
