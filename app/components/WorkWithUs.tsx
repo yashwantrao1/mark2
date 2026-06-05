@@ -13,9 +13,9 @@ export default function WorkWithUs({ theme }: Props) {
           Contact Us
         </Link>
         <div>
-          <Link href="/contact" className={`group  block w-fit  py-12 px-10  ${theme ? "text-(--offWhite)" : "text-(--charcoleBlack) "}`}>
+          <Link href="/contact" className={`group  block w-fit py-12 px-10 uppercase  ${theme ? "text-(--offWhite)" : "text-(--charcoleBlack) "}`}>
             <div className="w-80">
-              <h4 className="text-[12vw] font-light leading-[1cap] text-right">Work</h4>
+              <h4 className="text-[10vw] font-light leading-[1cap] text-right">Work</h4>
             </div>
             <div className="flex items-center gap-0">
               <div className="relative w-80 aspect-square shrink-0">
@@ -35,8 +35,8 @@ export default function WorkWithUs({ theme }: Props) {
                 />
               </div>
               <div>
-                <h2 className="text-[12vw] font-light leading-[1.2cap]">With</h2>
-                <h2 className="text-[12vw] font-light leading-[1.2cap]">Us</h2>
+                <h2 className="text-[10vw] font-light leading-[1.2cap]">With</h2>
+                <h2 className="text-[10vw] font-light leading-[1.2cap]">Us</h2>
               </div>
             </div>
           </Link>

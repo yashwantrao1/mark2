@@ -131,7 +131,7 @@ export default function WorkPageClient({
       )}
 
       <div className={`my-44 w-full  flex items-center justify-center ${theme ? "text-(--offWhite)" : "text-(--charcoleBlack)"}`}>
-        <h1 className="font-heading text-[12vw]  text-center leading-none">
+        <h1 className="font-heading text-[10vw]  text-center leading-none">
           {heading}
         </h1>
       </div>

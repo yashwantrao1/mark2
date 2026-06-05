@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function InfoProcessSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [imagePath, setImagePath] = useState("/img/insight.jpeg");
+  const [imagePath, setImagePath] = useState("/img/insight.png");
   const lenis = useLenis();
 
   useLayoutEffect(() => {
@@ -91,8 +91,8 @@ export default function InfoProcessSection() {
 
     if (!randomImage) return;
 
-    const maxTop = window.innerHeight - 150; // image height
-    const maxLeft = window.innerWidth - 250; // image width
+    const maxTop = window.innerWidth > 1536 ? window.innerHeight - 240 : window.innerHeight - 180; // image height
+    const maxLeft = window.innerWidth > 1536 ? window.innerWidth - 350 : window.innerWidth - 250; // image width
 
     const top = Math.random() * (maxTop - window.innerHeight * 0.05) + window.innerHeight * 0.05;
     const left = Math.random() * (maxLeft - window.innerWidth * 0.05) + window.innerWidth * 0.05;
@@ -120,31 +120,31 @@ export default function InfoProcessSection() {
       className="h-screen 2xl:px-44 px-24 py-14 overflow-hidden bg-(--offWhite)"
     >
       <div className="relative h-full w-full flex flex-col  justify-around gap-3 text-(--offWhite) mix-blend-difference">
-        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/insight.jpeg' className="item relative inset-0 flex flex-col justify-center w-1/3 ">
+        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/insight.png' className="item relative cursor-default inset-0 flex flex-col justify-center w-1/3 ">
           <h2 className="text-sm font-bold">Insight</h2>
           <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg  leading-snug max-w-3xl">
             <p>Understanding the problem is the first step. I analyze goals, users, and opportunities to uncover challenges and identify the best path forward.</p>
           </div>
         </div>
-        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/strategy.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[15%]">
+        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/strategy.png' className="item relative cursor-default inset-0 flex flex-col justify-center w-1/3 ml-[15%]">
           <h2 className="text-sm font-bold">Strategy</h2>
           <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>A strong strategy turns ideas into action. I define priorities, technology, and workflows to create a clear roadmap for success.</p>
           </div>
         </div>
-        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/design.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[30%]">
+        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/design.png' className="item relative cursor-default inset-0 flex flex-col justify-center w-1/3 ml-[30%]">
           <h2 className="text-sm font-bold">Design</h2>
           <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>Great design creates meaningful experiences. I craft intuitive, user-focused interfaces that balance usability, accessibility, and visual appeal.</p>
           </div>
         </div>
-        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/mettle.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[45%]">
+        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/mettle.png' className="item relative cursor-default inset-0 flex flex-col justify-center w-1/3 ml-[45%]">
           <h2 className="text-sm font-bold">Mettle</h2>
           <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>Execution is where ideas become reality. Using modern technologies and clean architecture, I build scalable, reliable, and high-performing solutions.</p>
           </div>
         </div>
-        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/impact.jpg' className="item relative inset-0 flex flex-col justify-center w-1/3 ml-[60%]">
+        <div onMouseEnter={updateimage}  onMouseLeave={updateImageLocaion} data-image='/img/impact.png' className="item relative cursor-default inset-0 flex flex-col justify-center w-1/3 ml-[60%]">
           <h2 className="text-sm font-bold">Impact</h2>
           <div className="pl-5 2xl:py-5 py-2 font-light 2xl:text-lg leading-snug max-w-3xl">
             <p>Success is measured by results. Through optimization and continuous improvement, I create products that drive engagement, growth, and lasting value.</p>

@@ -6,7 +6,7 @@
 }
 
 :root {
-  --background: #ffffff;
+  --background: #F4F8FF;
   --foreground: #171717;
   --charcoleBlack: #0A0504;
   --offWhite: #F4F8FF;
@@ -21,6 +21,7 @@ body {
   font-family: "jjannon-regular", serif;
   font-weight: 400;
   font-style: normal;
+  background-color: var(--background);
 }
 
 
