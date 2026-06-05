@@ -6,7 +6,7 @@ import InfoProcessSection from '@/app/info/InfoProcessSection'
 const page = () => {
   return (
     <>
-      <div className='h-screen 2xl:px-44 px-24 2xl:pr-0 pr-0 pt-14 overflow-hidden min-h-[700px]'>
+      <div className='h-screen 2xl:px-44 px-24 2xl:pr-0 pr-0 pt-14 overflow-hidden min-h-[700px] bg-(--offWhite)'>
         <div className='h-full w-full  grid 2xl:grid-cols-2 grid-cols-[60%_40%] text-(--charcoleBlack)'>
           <div className='col-[60%]'>
             <h2 className='text-sm font-bold'>About me</h2>
